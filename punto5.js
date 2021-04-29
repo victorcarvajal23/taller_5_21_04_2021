@@ -4,6 +4,7 @@
 // total de 50 obreros calificados a quienes debe
 //  cancelar por horas trabajadas. La hora trabajada 
 //  se pautó en 30.000 Bolívares
+const number = new Intl.NumberFormat("COU");
 const hora=30000;
 let Trabajador=new Array(5).fill("")
 let pago=[]
@@ -13,7 +14,8 @@ for (let i = 0; i < Trabajador.length; i++) {
     let valida=Number.isInteger(Trabajador[i])
     if (valida==true) {
         pago[i]=Trabajador[i]*hora
-        console.log(`el trabajador ${i+1} trabajo ${Trabajador[i]} horas y se gano ${pago[i]} Bolivares`)
+
+        console.log(`el trabajador ${i+1} trabajo ${Trabajador[i]} horas y se gano ${number.format(pago[i])} Bolivares`)
         NominaTotal+=pago[i];
 
     }
@@ -22,4 +24,4 @@ for (let i = 0; i < Trabajador.length; i++) {
         i--
     }
 }
-console.log("nomina total = "+NominaTotal+" Bolivares");
+console.log("nomina total = "+number.format(NominaTotal)+" Bolivares");
